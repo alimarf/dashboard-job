@@ -60,7 +60,7 @@ const PostJobPage: FC<PostJobPageProps> = ({}) => {
       </div>
 
       <div className="my-5">
-        <div className="text-lg font-semibold">Basik Information</div>
+        <div className="text-lg font-semibold">Basic Information</div>
         <div className="text-gray-400">
           List out your top perks and benefits.
         </div>
@@ -207,7 +207,7 @@ const PostJobPage: FC<PostJobPageProps> = ({}) => {
             title="Required Skills"
             subtitle="Add required skills for the job"
           >
-            <InputSkills form={form} />
+            <InputSkills form={form} name="requiredSkilss" label="Add Skills"/>
           </FieldInput>
 
           <FieldInput

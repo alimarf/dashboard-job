@@ -75,6 +75,7 @@ const Sidebar: FC<SidebarProps> = ({}) => {
         <div className="px-3 py-2">
           <h2 className="px-4 mb-2 text-lg font-semibold">Settings</h2>
           <Button
+            onClick={()=> router.push('/settings')}
             variant={"ghost"}
             className="justify-start w-full rounded-none hover:text-primary"
           >
