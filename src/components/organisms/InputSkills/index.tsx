@@ -5,6 +5,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { jobForSchema } from "@/lib/form-schema";
@@ -96,6 +97,7 @@ const InputSkills: FC<InputSkillsProps> = ({ form, name, label }) => {
               </div>
             </>
           </FormControl>
+          <FormMessage />
         </FormItem>
       )}
     ></FormField>
