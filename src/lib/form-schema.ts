@@ -1,7 +1,7 @@
 import { JOBTYPES } from "@/constants";
 import * as z from "zod";
 
-export const jobForSchema = z.object({
+export const jobFormSchema = z.object({
   roles: z
     .string({ required_error: "Job Title is required" })
     .min(3, { message: "Job title must be at least 3 characters" }),
@@ -37,9 +37,7 @@ export const jobForSchema = z.object({
 });
 
 export const overviewFormSchema = z.object({
-  image: z
-    .any()
-    .refine((item: any) => item?.name, { message: "Image is required" }),
+  image: z.any(),
   name: z.string({ required_error: "Name is required" }),
   website: z.string({ required_error: "Website is required" }),
   location: z.string({ required_error: "Location is required" }),

@@ -8,17 +8,16 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { jobForSchema } from "@/lib/form-schema";
 import { Item } from "@radix-ui/react-radio-group";
 import { PlusIcon } from "lucide-react";
-import React, { FC, useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import { UseFormReturn } from "react-hook-form";
 import { z } from "zod";
 
 interface InputSkillsProps {
   form: any;
   name: string;
-  label: string
+  label: string;
 }
 
 const InputSkills: FC<InputSkillsProps> = ({ form, name, label }) => {
@@ -46,6 +45,14 @@ const InputSkills: FC<InputSkillsProps> = ({ form, name, label }) => {
     form.setValue(name, skills);
   };
 
+  useEffect(() => {
+    const val = form.getValues(name);
+
+    if (val && val.length > 0) {
+      setValues(val);
+    }
+  }, [form, name]);
+
   return (
     <FormField
       control={form.control}
@@ -67,7 +74,9 @@ const InputSkills: FC<InputSkillsProps> = ({ form, name, label }) => {
               {isHide && (
                 <div className="flex flex-row gap-4 my-4">
                   <Input ref={inputRef} className="w-[246px]" />
-                  <Button type="button" onClick={handleSubmit}>Save</Button>
+                  <Button type="button" onClick={handleSubmit}>
+                    Save
+                  </Button>
                 </div>
               )}
               <div className="space-x-3">

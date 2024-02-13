@@ -2,10 +2,13 @@ import FieldInput from "@/components/organisms/FieldInput";
 import { InstagramIcon, LinkedinIcon } from "lucide-react";
 import React, { FC } from "react";
 import DialogAddTeam from "./DialogAddForm";
+import { CompanyTeam } from "@prisma/client";
 
-interface TeamFormProps {}
+interface TeamFormProps {
+  teams: CompanyTeam[] | undefined;
+}
 
-const TeamForm: FC<TeamFormProps> = ({}) => {
+const TeamForm: FC<TeamFormProps> = ({ teams }) => {
   return (
     <FieldInput
       title="Basic Information"
@@ -18,11 +21,11 @@ const TeamForm: FC<TeamFormProps> = ({}) => {
         </div>
 
         <div className="grid grid-cols-3 gap-5 mt-6">
-          {[0, 1, 2].map((item: number) => (
-            <div key={item} className="p-3 text-center shadow">
+          {teams?.map((item: CompanyTeam) => (
+            <div key={item.id} className="p-3 text-center shadow">
               <div className="mx-auto bg-gray-300 rounded-full w-14 h-14"></div>
-              <div className="mt-4 font-semibold">Alim Arief</div>
-              <div className="text-sm text-gray-500">Software Engineer</div>
+              <div className="mt-4 font-semibold">{item.name}</div>
+              <div className="text-sm text-gray-500">{item.position}</div>
 
               <div className="inline-flex gap-3 mx-auto mt-5 text-gray-500">
                 <InstagramIcon className="w-4 h-4" />
